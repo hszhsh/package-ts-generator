@@ -1,9 +1,15 @@
 {
   "name": "package-ts-generator",
   "main": "./dist/package-ts-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generates and opens a new typescript package project, and import type definitions using typings.",
-  "keywords": ["package", "typescript", "generator", "project", "typings"],
+  "keywords": [
+    "package",
+    "typescript",
+    "generator",
+    "project",
+    "typings"
+  ],
   "activationCommands": {
     "atom-workspace": [
       "package-ts-generator:generate-package",
