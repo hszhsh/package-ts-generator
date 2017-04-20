@@ -1,0 +1,29 @@
+{
+    "name": "package-ts-generator",
+    "main": "./dist/package-ts-generator",
+    "version": "0.0.0",
+    "description": "Generates and opens a new typescript package project",
+    "keywords": [],
+    "activationCommands": {
+        "atom-workspace": [
+            "package-ts-generator:generate-package",
+            "package-ts-generator:import-typing"
+        ]
+    },
+    "repository": "https://github.com/hszhsh/package-ts-generator",
+    "license": "MIT",
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+    },
+    "configSchema": {
+        "createWithReact": {
+            "default": true,
+            "type": "boolean",
+            "description": "When enabled, init the project with react support"
+        }
+    },
+    "dependencies": {
+        "typings": "2.1.1",
+        "mustache": "2.3.0"
+    }
+}
