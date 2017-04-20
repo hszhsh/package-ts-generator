@@ -1446,6 +1446,7 @@ import EventKit = require('~atom~event-kit');
 
 interface CommandRegistry {
   add(target: string, commandName: string, callback: EventKit.EventCallback): any;
+  add(target: HTMLElement, commandName: string, callback: EventKit.EventCallback): any;
   findCommands(params: { target: any }): Array<{ name: string, displayName: string }>;
   dispatch(target: any, commandName: string): void;
   onWillDispatch(callback: EventKit.EventCallback): void;
@@ -2374,6 +2375,8 @@ import SelectionChangeEventHandler = require('~atom/src/atom/selection-change-ev
 import ClipScreenPositionOption = require('~atom/src/atom/clip-screen-position-option');
 
 class TextEditor {
+  element: HTMLElement;
+  constructor(props: any);
   onDidChangeTitle: (callback: () => void) => EventKit.Disposable;
   onDidChangePath: (callback: () => void) => EventKit.Disposable;
   onDidChange: (callback: () => void) => EventKit.Disposable;
