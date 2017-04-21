@@ -1,7 +1,7 @@
 {
   "name": "package-ts-generator",
   "main": "./dist/package-ts-generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generates and opens a new typescript package project, and import type definitions using typings.",
   "keywords": [
     "package",
