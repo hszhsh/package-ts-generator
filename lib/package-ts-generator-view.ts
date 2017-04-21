@@ -20,6 +20,7 @@ export default class PackageTsGeneratorView {
     error: HTMLElement;
     checkboxDiv: HTMLElement;
     checkbox: HTMLInputElement;
+    saveCheckbox: HTMLInputElement;
     proxyCheckbox: HTMLInputElement;
     message: HTMLElement;
     inCreateMode: boolean;
@@ -36,7 +37,14 @@ export default class PackageTsGeneratorView {
         this.checkbox.setAttribute("type", "checkbox");
         this.checkboxDiv.appendChild(this.checkbox);
         let label = document.createElement('label');
-        label.innerHTML = "&nbsp;&nbsp;global&nbsp;&nbsp;&nbsp;&nbsp;";
+        label.innerHTML = "&nbsp;&nbsp;--global&nbsp;&nbsp;&nbsp;&nbsp;";
+        this.checkboxDiv.appendChild(label);
+        this.saveCheckbox = document.createElement('input');
+        this.saveCheckbox.setAttribute("type", "checkbox");
+        this.saveCheckbox.setAttribute("checked", "checked");
+        this.checkboxDiv.appendChild(this.saveCheckbox);
+        label = document.createElement('label');
+        label.innerHTML = "&nbsp;&nbsp;--save&nbsp;&nbsp;&nbsp;&nbsp;";
         this.checkboxDiv.appendChild(label);
         this.proxyCheckbox = document.createElement('input');
         this.proxyCheckbox.setAttribute("type", "checkbox");
@@ -109,11 +117,11 @@ export default class PackageTsGeneratorView {
         } else {
             let typingName = this.miniEditor.getText().trim();
             this.close();
-            this.importTyping(typingName.trim(), this.checkbox.checked, this.proxyCheckbox.checked);
+            this.importTyping(typingName.trim(), this.checkbox.checked, this.saveCheckbox.checked, this.proxyCheckbox.checked);
         }
     }
 
-    private importTyping(type: string, global: boolean, proxy: boolean) {
+    private importTyping(type: string, global: boolean, save: boolean, proxy: boolean) {
         if (type.length == 0) {
             return;
         }
@@ -126,7 +134,9 @@ export default class PackageTsGeneratorView {
         args.push(typingsPath);
         args.push("install");
         args.push(type);
-        args.push("--save");
+        if (save) {
+            args.push("--save");
+        }
         if (global) {
             args.push("--global");
         }
